@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "dragan",
+  "version": "${version}",
+  "name": "dragan",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/dragan/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "md.dragan.client.DraganDataGenerator"
+    ],
+    "client": [
+      "md.dragan.client.DraganClient"
+    ],
+    "main": [
+      "md.dragan.Dragan"
+    ]
+  },
+  "mixins": [
+    "dragan.mixins.json",
+    {
+      "config": "dragan.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

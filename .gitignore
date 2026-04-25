@@ -1,0 +1,36 @@
+# Gradle / Java
+.gradle/
+build/
+out/
+classes/
+
+# Loom runtime and local game data
+run/
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs / crash dumps
+*.log
+*.log.*
+hs_err_pid*
+replay_pid*
+
+# Temp / archives
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+*.zip
+*.7z
+*.rar

@@ -1,0 +1,26 @@
+package md.dragan.mixin.client;
+
+import md.dragan.client.gui.modernclick.state.GuiStateStore;
+import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.entity.PlayerEntityRenderer;
+import net.minecraft.client.render.entity.state.PlayerEntityRenderState;
+import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.text.Text;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+@Mixin(PlayerEntityRenderer.class)
+public final class PlayerEntityRendererMixin {
+    @Inject(
+        method = "renderLabelIfPresent(Lnet/minecraft/client/render/entity/state/PlayerEntityRenderState;Lnet/minecraft/text/Text;Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V",
+        at = @At("HEAD"),
+        cancellable = true
+    )
+    private void dragan$hideVanillaPlayerLabel(PlayerEntityRenderState state, Text text, MatrixStack matrices, VertexConsumerProvider consumers, int light, CallbackInfo ci) {
+        if (GuiStateStore.isModuleEnabled("Nametags") && GuiStateStore.getToggleSetting("Nametags", "Hide Vanilla", true)) {
+            ci.cancel();
+        }
+    }
+}
